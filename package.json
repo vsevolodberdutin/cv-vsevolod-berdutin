@@ -1,0 +1,92 @@
+{
+  "name": "cv-vsevolod-berdutin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive CV Portfolio with DeFi Dashboard - Micro-frontend architecture using Feature-Sliced Design",
+  "author": "Vsevolod Berdutin <vsevolodberdutin@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "yarn workspace cv-portfolio dev & yarn workspace defi-dashboard dev & yarn workspace backend dev",
+    "dev:cv": "yarn workspace cv-portfolio dev",
+    "dev:defi": "yarn workspace defi-dashboard dev",
+    "dev:backend": "yarn workspace backend dev",
+    "build": "yarn workspace cv-portfolio build && yarn workspace defi-dashboard build && yarn workspace backend build",
+    "build:cv": "yarn workspace cv-portfolio build",
+    "build:defi": "yarn workspace defi-dashboard build",
+    "build:backend": "yarn workspace backend build",
+    "start": "yarn workspace cv-portfolio start & yarn workspace defi-dashboard start & yarn workspace backend start",
+    "start:cv": "yarn workspace cv-portfolio start",
+    "start:defi": "yarn workspace defi-dashboard start",
+    "start:backend": "yarn workspace backend start",
+    "lint": "yarn workspaces run lint",
+    "lint:fix": "yarn workspaces run lint:fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "test": "yarn workspaces run test",
+    "test:watch": "yarn workspaces run test:watch",
+    "test:coverage": "yarn workspaces run test:coverage",
+    "type-check": "yarn workspaces run type-check",
+    "clean": "yarn workspaces run clean && rm -rf node_modules",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "eslint-config-next": "^14.0.3",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "keywords": [
+    "portfolio",
+    "cv",
+    "resume",
+    "defi",
+    "dashboard",
+    "next.js",
+    "react",
+    "typescript",
+    "tailwind",
+    "feature-sliced-design",
+    "micro-frontend",
+    "module-federation",
+    "websocket",
+    "openai",
+    "llm",
+    "chatbot"
+  ],
+  "repository": "https://github.com/vsevolodberdutin/cv-vsevolod-berdutin.git",
+  "bugs": {
+    "url": "https://github.com/vsevolodberdutin/cv-vsevolod-berdutin/issues"
+  },
+  "main": "index.js"
+}
