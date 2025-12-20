@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useEffect } from 'react';
 import { Card, Spinner } from '@/shared/ui';
 import { MessageCard } from '@/entities/message';

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { ToggleButton } from '@/features/toggle-section';
 import { Card } from '@/shared/ui';

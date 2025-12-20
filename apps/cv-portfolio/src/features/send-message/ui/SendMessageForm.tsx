@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useEffect } from 'react';
 import { Button, Input } from '@/shared/ui';
 import { Message } from '@/entities/message';
