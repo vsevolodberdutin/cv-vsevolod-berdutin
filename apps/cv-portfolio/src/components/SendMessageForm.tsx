@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useRef, useEffect } from 'react';
 import { Button, cn } from 'ui_kit';
 import { Message } from '@/data/messageTypes';

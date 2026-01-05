@@ -1,58 +1,40 @@
 # CV Portfolio Dockerfile
-# Multi-stage build for optimized production image
+# Multi-stage build with Vite + Nginx for production
 
-FROM node:18-alpine AS base
+# Build stage
+FROM node:20-alpine AS builder
 
-# Install dependencies only when needed
-FROM base AS deps
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy root package files for monorepo
+# Copy workspace files
 COPY package.json yarn.lock ./
 COPY apps/cv-portfolio/package.json ./apps/cv-portfolio/
+COPY apps/ui-kit/package.json ./apps/ui-kit/
+
+# Install dependencies
 RUN yarn install --frozen-lockfile
 
-# Build the application
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/apps ./apps
+# Copy source code
 COPY apps/cv-portfolio ./apps/cv-portfolio
+COPY apps/ui-kit ./apps/ui-kit
 
-# Environment variables for build
-ENV NEXT_TELEMETRY_DISABLED 1
-# Note: OPENAI_API_KEY should be provided at runtime
+# Build ui-kit first
+WORKDIR /app/apps/ui-kit
+RUN yarn build
 
+# Build cv-portfolio
 WORKDIR /app/apps/cv-portfolio
 RUN yarn build
 
-# Production image
-FROM base AS runner
-WORKDIR /app
+# Production stage
+FROM nginx:alpine
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+# Copy built files
+COPY --from=builder /app/apps/cv-portfolio/dist /usr/share/nginx/html
 
-# Create non-root user
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy standalone output (includes monorepo structure with node_modules)
-COPY --from=builder --chown=nextjs:nodejs /app/apps/cv-portfolio/.next/standalone ./
-
-# Copy static files
-COPY --from=builder --chown=nextjs:nodejs /app/apps/cv-portfolio/.next/static ./apps/cv-portfolio/.next/static
-
-# Copy public folder
-COPY --from=builder /app/apps/cv-portfolio/public ./apps/cv-portfolio/public
-
-USER nextjs
+# Copy nginx config
+COPY apps/cv-portfolio/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
-
-# Run server from the app directory
-CMD ["node", "apps/cv-portfolio/server.js"]
+CMD ["nginx", "-g", "daemon off;"]

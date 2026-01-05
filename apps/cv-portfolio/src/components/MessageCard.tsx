@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { Message } from '@/data/messageTypes';
 import { formatTime, cn } from 'ui_kit';

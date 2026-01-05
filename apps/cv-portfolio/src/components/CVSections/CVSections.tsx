@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 import { ToggleButton } from '@/components/ToggleButton';
 import { Card, cn } from 'ui_kit';

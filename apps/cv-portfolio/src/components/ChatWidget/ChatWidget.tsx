@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useRef, useEffect } from 'react';
 import { Card, Spinner } from 'ui_kit';
 import { MessageCard } from '@/components/MessageCard';

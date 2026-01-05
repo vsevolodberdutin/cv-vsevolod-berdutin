@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { SkillCategory } from '@/data/types';
 import { Badge } from 'ui_kit';

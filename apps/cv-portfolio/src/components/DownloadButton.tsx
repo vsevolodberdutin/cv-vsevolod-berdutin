@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { Button } from 'ui_kit';
 import { downloadCV } from '@/utils/downloadCV';
