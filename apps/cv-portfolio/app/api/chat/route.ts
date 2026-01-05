@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Lazy initialization of OpenAI client to avoid build-time errors
+function getOpenAIClient() {
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+}
 
 // CV Context for the AI assistant
 const CV_CONTEXT = `You are Vsevolod Berdutin's AI assistant. Answer questions about his professional background based on this CV:
@@ -99,6 +102,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    // Initialize OpenAI client
+    const openai = getOpenAIClient();
 
     // Build messages array
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [

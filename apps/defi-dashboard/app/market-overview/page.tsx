@@ -65,7 +65,7 @@ export default async function MarketOverviewPage() {
                 This page was generated at build time: <span className="font-mono">{generatedAt}</span>
               </p>
               <p className="mt-1 text-xs text-text-secondary">
-                Data is static and will only update when the site is rebuilt. Perfect for content that doesn't change frequently.
+                Data is static and will only update when the site is rebuilt. Perfect for content that doesn&apos;t change frequently.
               </p>
             </div>
           </div>

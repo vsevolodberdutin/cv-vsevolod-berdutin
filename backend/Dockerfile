@@ -5,16 +5,18 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
+# Copy root package files for monorepo
 COPY package.json yarn.lock ./
+COPY backend/package.json ./backend/
 
 # Install dependencies
 RUN yarn install --frozen-lockfile
 
-# Copy source code
-COPY . .
+# Copy backend source code
+COPY backend ./backend
 
 # Build TypeScript to JavaScript
+WORKDIR /app/backend
 RUN yarn build
 
 # Create non-root user

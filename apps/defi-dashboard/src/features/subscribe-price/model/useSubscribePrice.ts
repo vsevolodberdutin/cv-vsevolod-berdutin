@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 export interface PriceData {
   [symbol: string]: number;
@@ -15,6 +15,9 @@ export function useSubscribePrice(symbols: string[]) {
   const [prices, setPrices] = useState<PriceData>({});
   const [isConnected, setIsConnected] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Memoize symbols string to avoid unnecessary re-renders
+  const symbolsKey = useMemo(() => symbols.join(','), [symbols.join(',')]);
 
   useEffect(() => {
     const wsUrl = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8080/prices';
@@ -63,7 +66,7 @@ export function useSubscribePrice(symbols: string[]) {
         ws.close();
       }
     };
-  }, [symbols.join(',')]);
+  }, [symbolsKey]);
 
   return { prices, isConnected, error };
 }

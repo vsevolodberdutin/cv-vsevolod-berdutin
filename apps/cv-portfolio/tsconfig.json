@@ -21,7 +21,7 @@
     "paths": {
       "@/*": ["./*"],
       "@/app/*": ["./app/*"],
-      "@/pages/*": ["./src/pages/*"],
+      "@/page-compositions/*": ["./src/page-compositions/*"],
       "@/widgets/*": ["./src/widgets/*"],
       "@/features/*": ["./src/features/*"],
       "@/entities/*": ["./src/entities/*"],

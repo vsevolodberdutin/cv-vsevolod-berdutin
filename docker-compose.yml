@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   # CV Portfolio Application
   cv-portfolio:
     build:
-      context: ./apps/cv-portfolio
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./apps/cv-portfolio/Dockerfile
     container_name: cv-portfolio
     ports:
       - "3000:3000"
@@ -28,8 +26,8 @@ services:
   # DeFi Dashboard Application
   defi-dashboard:
     build:
-      context: ./apps/defi-dashboard
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./apps/defi-dashboard/Dockerfile
     container_name: defi-dashboard
     ports:
       - "3001:3000"
@@ -51,8 +49,8 @@ services:
   # WebSocket Backend Server
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./backend/Dockerfile
     container_name: backend-websocket
     ports:
       - "8080:8080"

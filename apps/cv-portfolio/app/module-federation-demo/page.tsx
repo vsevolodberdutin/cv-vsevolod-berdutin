@@ -167,7 +167,7 @@ export default function Page() {
             <ol className="ml-6 list-decimal space-y-1">
               <li>Start CV Portfolio: <code className="rounded bg-yellow-100 px-1">cd apps/cv-portfolio && yarn dev</code></li>
               <li>Start DeFi Dashboard: <code className="rounded bg-yellow-100 px-1">cd apps/defi-dashboard && yarn dev -p 3001</code></li>
-              <li>Click "Load Remote PriceTicker Widget" above</li>
+              <li>Click &quot;Load Remote PriceTicker Widget&quot; above</li>
             </ol>
             <p className="mt-3 text-xs">
               Note: Both apps must be running simultaneously for Module Federation

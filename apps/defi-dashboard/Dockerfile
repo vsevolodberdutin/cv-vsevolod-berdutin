@@ -8,20 +8,23 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
+# Copy root package files for monorepo
 COPY package.json yarn.lock ./
+COPY apps/defi-dashboard/package.json ./apps/defi-dashboard/
 RUN yarn install --frozen-lockfile
 
 # Build the application
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+COPY --from=deps /app/apps ./apps
+COPY apps/defi-dashboard ./apps/defi-dashboard
 
 # Environment variables for build
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NEXT_PUBLIC_WS_URL=ws://backend:8080
 
+WORKDIR /app/apps/defi-dashboard
 RUN yarn build
 
 # Production image
@@ -35,12 +38,14 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy built application
-COPY --from=builder /app/public ./public
+# Copy standalone output (includes monorepo structure with node_modules)
+COPY --from=builder --chown=nextjs:nodejs /app/apps/defi-dashboard/.next/standalone ./
 
-# Automatically leverage output traces to reduce image size
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copy static files
+COPY --from=builder --chown=nextjs:nodejs /app/apps/defi-dashboard/.next/static ./apps/defi-dashboard/.next/static
+
+# Copy public folder
+COPY --from=builder /app/apps/defi-dashboard/public ./apps/defi-dashboard/public
 
 USER nextjs
 
@@ -49,4 +54,5 @@ EXPOSE 3000
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
-CMD ["node", "server.js"]
+# Run server from the app directory
+CMD ["node", "apps/defi-dashboard/server.js"]

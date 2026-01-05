@@ -21,7 +21,7 @@ export const HeroSection: React.FC = () => {
           <p>
             Led distributed teams of <strong className="text-text-primary">3-5 engineers</strong>,
             delivering solutions for <strong className="text-text-primary">50,000+ internal users</strong> at
-            Eastern Europe's largest financial institution.
+            Eastern Europe&apos;s largest financial institution.
           </p>
           <p>
             Expertise in <strong className="text-text-primary">fintech, cryptocurrency, and corporate B2B</strong> applications.

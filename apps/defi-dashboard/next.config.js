@@ -3,6 +3,8 @@
 //
 // const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -12,6 +14,10 @@ const nextConfig = {
   },
   // Enable standalone output for Docker
   output: 'standalone',
+  // Required for monorepo standalone builds
+  experimental: {
+    outputFileTracingRoot: path.join(__dirname, '../../'),
+  },
 
   // Module Federation webpack configuration (disabled - see docs/MODULE_FEDERATION.md)
   // webpack: (config, options) => {

@@ -8,20 +8,23 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
+# Copy root package files for monorepo
 COPY package.json yarn.lock ./
+COPY apps/cv-portfolio/package.json ./apps/cv-portfolio/
 RUN yarn install --frozen-lockfile
 
 # Build the application
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+COPY --from=deps /app/apps ./apps
+COPY apps/cv-portfolio ./apps/cv-portfolio
 
 # Environment variables for build
 ENV NEXT_TELEMETRY_DISABLED 1
 # Note: OPENAI_API_KEY should be provided at runtime
 
+WORKDIR /app/apps/cv-portfolio
 RUN yarn build
 
 # Production image
@@ -35,13 +38,14 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy built application
-COPY --from=builder /app/public ./public
+# Copy standalone output (includes monorepo structure with node_modules)
+COPY --from=builder --chown=nextjs:nodejs /app/apps/cv-portfolio/.next/standalone ./
 
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copy static files
+COPY --from=builder --chown=nextjs:nodejs /app/apps/cv-portfolio/.next/static ./apps/cv-portfolio/.next/static
+
+# Copy public folder
+COPY --from=builder /app/apps/cv-portfolio/public ./apps/cv-portfolio/public
 
 USER nextjs
 
@@ -50,4 +54,5 @@ EXPOSE 3000
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
-CMD ["node", "server.js"]
+# Run server from the app directory
+CMD ["node", "apps/cv-portfolio/server.js"]
