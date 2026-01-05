@@ -1,0 +1,70 @@
+/**
+ * CSS Variables Theming System
+ * Supports both light theme (CV Portfolio) and dark theme (DeFi Dashboard)
+ */
+
+:root {
+  /* Light theme (CV Portfolio default) */
+  --color-background: #FFFFFF;
+  --color-background-secondary: #F7F7F8;
+  --color-text-primary: #2D2D2D;
+  --color-text-secondary: #6B6B6B;
+  --color-accent: #D97706;
+  --color-border: #E5E5E5;
+
+  /* Semantic colors (light theme) */
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+}
+
+/**
+ * Dark theme (DeFi Dashboard)
+ * Applied via data-theme="dark" attribute on html element
+ */
+[data-theme="dark"] {
+  --color-background: #0F1419;
+  --color-background-secondary: #1A1F26;
+  --color-text-primary: #E7E9EA;
+  --color-text-secondary: #8B98A5;
+  --color-accent: #00D46A;
+  --color-border: #2F3336;
+
+  /* Semantic colors (dark theme) */
+  --color-success: #00D46A;
+  --color-error: #F6465D;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+}
+
+/**
+ * Component-specific CSS variables
+ * These can be customized per component while respecting the theme
+ */
+.button {
+  --button-bg: var(--color-accent);
+  --button-text: #FFFFFF;
+  --button-hover-opacity: 0.9;
+}
+
+.card {
+  --card-bg: var(--color-background);
+  --card-border: var(--color-border);
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.input {
+  --input-bg: var(--color-background);
+  --input-border: var(--color-border);
+  --input-focus-border: var(--color-accent);
+}
+
+.badge {
+  --badge-bg: var(--color-accent);
+  --badge-text: #FFFFFF;
+}
+
+.spinner {
+  --spinner-color: var(--color-accent);
+}

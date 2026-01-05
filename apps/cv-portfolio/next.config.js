@@ -1,6 +1,5 @@
-// Module Federation configuration is available but commented out due to Next.js 14 compatibility issues
-// See docs/MODULE_FEDERATION.md for setup instructions and alternative approaches
-//
+// Module Federation temporarily disabled due to Next.js 14 webpack compatibility issues
+// Using ui-kit as local workspace package instead
 // const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
 const path = require('path');
@@ -19,31 +18,14 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, '../../'),
   },
 
-  // Module Federation webpack configuration (disabled - see docs/MODULE_FEDERATION.md)
-  // webpack: (config, options) => {
-  //   if (!options.isServer) {
-  //     config.plugins.push(
-  //       new NextFederationPlugin({
-  //         name: 'cv_portfolio',
-  //         filename: 'static/chunks/remoteEntry.js',
-  //         exposes: {
-  //           './Header': './src/widgets/header',
-  //           './Footer': './src/widgets/footer',
-  //           './ChatWidget': './src/widgets/chat-widget',
-  //         },
-  //         remotes: {
-  //           defi_dashboard: `defi_dashboard@http://localhost:3001/_next/static/chunks/remoteEntry.js`,
-  //         },
-  //         shared: {
-  //           react: { singleton: true, requiredVersion: '^18' },
-  //           'react-dom': { singleton: true, requiredVersion: '^18' },
-  //           next: { singleton: true },
-  //         },
-  //       })
-  //     );
-  //   }
-  //   return config;
-  // },
+  // Webpack config to handle ui-kit imports via alias
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'ui_kit': path.resolve(__dirname, '../../apps/ui-kit/src'),
+    };
+    return config;
+  },
 }
 
 module.exports = nextConfig
