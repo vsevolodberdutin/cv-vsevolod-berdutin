@@ -32,6 +32,7 @@ export const HeroSection: React.FC = () => {
           </p>
           <p className="mt-4 border-t border-gray-300 pt-4">
             <strong className="text-text-primary">Languages:</strong>{' '}
+            <br/>
             {cvData.languages.map((lang, index) => (
               <span key={lang.name}>
                 {lang.name} ({lang.level})
