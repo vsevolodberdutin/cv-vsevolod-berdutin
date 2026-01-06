@@ -112,15 +112,16 @@ export const Footer: React.FC = () => {
           </div>
         </Card>
 
-        {/* Download CV Button */}
-        <div className="flex justify-center">
-          <DownloadButton />
+        {/* Download CV Buttons */}
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <DownloadButton format="pdf" />
+          <DownloadButton format="word" variant="secondary" />
         </div>
 
         {/* Copyright */}
         <div className="text-center text-sm text-text-secondary">
           <p>
-            © {new Date().getFullYear()} Vsevolod Berdutin. Built with Next.js,
+            © {new Date().getFullYear()} Vsevolod Berdutin. Built with React, Vite,
             TypeScript & Tailwind CSS
           </p>
           <p className="mt-1">
