@@ -400,10 +400,4 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 
 ---
 
-## 🌟 Show Your Support
-
-Give a ⭐️ if this project helped you or if you find it interesting!
-
----
-
 **Built with ❤️ using React + Vite**
