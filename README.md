@@ -69,7 +69,7 @@ This project uses **Yarn Workspaces** to manage multiple applications:
 
 - **cv-portfolio** - Main CV application built with Vite + React
 - **ui-kit** - Shared component library with Module Federation
-- **backend** - Express + WebSocket server for AI chat and real-time features
+- **backend** - Express server for AI chat API
 
 ### Component Organization
 
@@ -103,7 +103,6 @@ This project uses **Yarn Workspaces** to manage multiple applications:
 ### Backend
 - **Runtime:** Node.js 18+
 - **Framework:** Express 4.18
-- **WebSocket:** ws 8.16
 - **AI:** OpenAI SDK 6.15
 
 ### Development Tools
@@ -200,13 +199,11 @@ cv-vsevolod-berdutin/
 │       ├── vite.config.ts
 │       └── package.json
 │
-├── backend/                      # Express + WebSocket Server
+├── backend/                      # Express API Server
 │   ├── src/
 │   │   ├── server.ts            # Main entry point
-│   │   ├── routes/
-│   │   │   └── chat.ts          # OpenAI chat endpoint
-│   │   └── websocket/
-│   │       └── priceStream.ts   # Mock price streaming
+│   │   └── routes/
+│   │       └── chat.ts          # OpenAI chat endpoint
 │   ├── tsconfig.json
 │   └── package.json
 │
@@ -396,7 +393,7 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 - ✅ CV Portfolio completed with Vite + React
 - ✅ AI Chat integration functional (OpenAI)
 - ✅ UI Kit with Atomic Design pattern
-- ✅ Backend with Express + WebSocket
+- ✅ Backend API with Express
 - ✅ Monorepo setup with Yarn Workspaces
 - 🚧 Module Federation integration (experimental)
 - 📝 Documentation (ongoing)
