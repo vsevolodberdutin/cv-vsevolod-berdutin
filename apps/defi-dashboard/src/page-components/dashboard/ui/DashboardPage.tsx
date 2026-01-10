@@ -52,6 +52,20 @@ export const DashboardPage: React.FC = () => {
                 <option value="ETH/USD">ETH/USD</option>
                 <option value="SOL/USD">SOL/USD</option>
               </select>
+
+              {/* Back to CV Portfolio Button */}
+              <a
+                href="http://localhost:3000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-green-positive bg-bg-primary px-4 py-2
+                  text-sm font-semibold text-green-positive shadow-sm
+                  transition duration-300
+                  hover:bg-green-positive hover:text-bg-primary hover:shadow-md"
+              >
+                <span>←</span>
+                <span>Back to CV</span>
+              </a>
             </div>
           </div>
         </div>

@@ -13,11 +13,15 @@ export default function ModuleFederationDemo() {
         <div className="mb-8">
           <Link
             to="/"
-            className="mb-4 inline-block text-sm text-gray-600 hover:text-gray-900"
+            className="mb-4 inline-flex items-center gap-2 rounded-lg border border-accent bg-white px-4 py-2
+              text-sm font-semibold text-accent shadow-sm
+              transition duration-300
+              hover:bg-accent hover:text-white hover:shadow-md"
           >
-            ← Back to Home
+            <span>←</span>
+            <span>Back to CV</span>
           </Link>
-          <h1 className="mb-3 text-4xl font-bold text-gray-900">
+          <h1 className="mb-3 mt-6 text-4xl font-bold text-gray-900">
             Module Federation Demo
           </h1>
           <p className="text-lg text-gray-600">
