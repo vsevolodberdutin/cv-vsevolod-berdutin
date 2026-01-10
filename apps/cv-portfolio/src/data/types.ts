@@ -47,6 +47,7 @@ export interface Contact {
   email: string;
   linkedin: string;
   telegram: string;
+  whatsapp?: string;
   github?: string;
   website?: string;
 }

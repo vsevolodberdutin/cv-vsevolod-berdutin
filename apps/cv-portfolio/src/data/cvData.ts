@@ -193,6 +193,7 @@ English (C1) • Hebrew (B1/B2) • Russian (Native)`,
     email: 'vsevolodberdutin@gmail.com',
     linkedin: 'https://linkedin.com/in/vsevolodberdutin',
     telegram: 'https://t.me/vsevolodberdutin',
+    whatsapp: 'https://wa.me/972555078880',
     github: 'https://github.com/vsevolodberdutin',
   },
 };
