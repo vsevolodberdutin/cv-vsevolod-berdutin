@@ -1,5 +1,5 @@
 #!/bin/bash
-# Deployment script for CV Portfolio & DeFi Dashboard
+# Deployment script for CV Portfolio 
 # Usage: ./scripts/deploy.sh [environment]
 
 set -e

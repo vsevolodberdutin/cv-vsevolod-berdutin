@@ -1,11 +1,11 @@
-# Interactive CV Portfolio with DeFi Dashboard
+# Interactive CV Portfolio
 
-> A modern, interactive portfolio application showcasing professional experience through two micro-frontend applications built with **Feature-Sliced Design** architecture.
+> A modern, interactive portfolio application built with React, showcasing professional experience with an AI-powered chat assistant.
 
-[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18.3-61dafb)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5.0-646cff)](https://vitejs.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-38bdf8)](https://tailwindcss.com/)
-[![Feature-Sliced Design](https://img.shields.io/badge/Architecture-FSD-blue)](https://feature-sliced.design/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -28,17 +28,15 @@
 
 ## 🎯 Overview
 
-This project demonstrates advanced React/Next.js capabilities through two interconnected micro-frontend applications:
+This project is an interactive CV portfolio built with React and Vite, featuring:
 
-1. **CV Portfolio** - Interactive resume with AI-powered chat assistant
-2. **DeFi Dashboard** - Real-time cryptocurrency trading dashboard
-
-Both applications are built using **Feature-Sliced Design (FSD)** methodology, showcasing scalable, maintainable frontend architecture patterns.
+1. **CV Portfolio** - Interactive resume with expandable sections
+2. **AI Chat Assistant** - OpenAI-powered chat widget for interactive Q&A
+3. **UI Kit** - Shared component library with atomic design patterns
 
 ### Live Demo
 
 - 🌐 CV Portfolio: [https://cv.vsevolodberdutin.com](https://cv.vsevolodberdutin.com)
-- 📊 DeFi Dashboard: [https://defi.vsevolodberdutin.com](https://defi.vsevolodberdutin.com)
 
 ---
 
@@ -63,87 +61,55 @@ Both applications are built using **Feature-Sliced Design (FSD)** methodology, s
   - Clean, minimalist design
   - Accessibility-first approach (WCAG 2.1 AA)
 
-### DeFi Dashboard Application
-
-- **Real-Time Price Tracking**
-  - WebSocket integration for live updates
-  - Support for multiple cryptocurrencies
-  - Price change indicators
-
-- **Interactive Charts**
-  - Candlestick charts
-  - Volume analysis
-  - Historical trends
-  - Recharts integration
-
-- **Order Book Visualization**
-  - Live bid/ask display
-  - Depth visualization
-  - Market data analytics
-
-- **Rendering Strategies Showcase**
-  - Static Site Generation (SSG) - Market Overview
-  - Server-Side Rendering (SSR) - Live Trading
-  - Incremental Static Regeneration (ISR) - Analytics
-
 ---
 
 ## 🏗️ Architecture
 
-### Feature-Sliced Design (FSD)
+### Monorepo Structure
 
-This project follows the **Feature-Sliced Design** methodology for optimal code organization:
+This project uses **Yarn Workspaces** to manage multiple applications:
 
-```
-Layer 6: app/          → Application initialization
-Layer 5: pages/        → Page compositions
-Layer 4: widgets/      → Composite UI blocks
-Layer 3: features/     → User interactions
-Layer 2: entities/     → Business entities
-Layer 1: shared/       → Reusable resources
-```
+- **cv-portfolio** - Main CV application built with Vite + React
+- **ui-kit** - Shared component library with Module Federation
+- **backend** - Express + WebSocket server for AI chat and real-time features
 
-**Key Principles:**
-- ✅ Unidirectional dependency flow (bottom-up)
-- ✅ Public API pattern for encapsulation
-- ✅ Clear layer boundaries
-- ✅ Self-contained slices
-- ✅ Testability and maintainability
+### Component Organization
 
-### Micro-Frontend Architecture
+- **Traditional React structure** with logical separation:
+  - `/components` - Reusable UI components
+  - `/pages` - Route-based page components
+  - `/hooks` - Custom React hooks
+  - `/api` - API integration layer
+  - `/utils` - Utility functions
 
-- **Module Federation** for runtime component sharing
-- **Independent deployment** of each application
-- **Shared dependencies** optimization
-- **Isolated development** workflows
+- **UI Kit follows Atomic Design**:
+  - `/atoms` - Basic components (Button, Input, Badge, Spinner)
+  - `/molecules` - Composite components (Card)
+  - `/hooks` - Reusable hooks
+  - `/utils` - Shared utilities
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **Framework:** Next.js 14 (App Router)
+- **Framework:** Vite 5.0 + React 18.3
 - **Language:** TypeScript 5.3
-- **Styling:** Tailwind CSS 3.3
-- **State Management:** Zustand
-- **Charts:** Recharts
+- **Styling:** Tailwind CSS 3.4
+- **State Management:** Zustand 5.0
+- **Routing:** React Router DOM 6.21
 - **Animations:** Framer Motion
 - **AI Integration:** OpenAI API
+- **Module Federation:** @originjs/vite-plugin-federation
 
 ### Backend
 - **Runtime:** Node.js 18+
-- **API:** Next.js API Routes
-- **WebSocket:** ws library
-- **Real-time:** Server-Sent Events
-
-### DevOps
-- **Containerization:** Docker & Docker Compose
-- **Reverse Proxy:** Nginx
-- **CI/CD:** GitHub Actions
-- **Deployment:** Vercel / AWS / DigitalOcean
+- **Framework:** Express 4.18
+- **WebSocket:** ws 8.16
+- **AI:** OpenAI SDK 6.15
 
 ### Development Tools
-- **Testing:** Jest, React Testing Library
+- **Package Manager:** Yarn Workspaces
 - **Linting:** ESLint, Prettier
 - **Type Checking:** TypeScript strict mode
 - **Git Hooks:** Husky, lint-staged
@@ -156,7 +122,6 @@ Layer 1: shared/       → Reusable resources
 
 - Node.js 18+ ([Download](https://nodejs.org/))
 - Yarn 1.22+ ([Install](https://yarnpkg.com/))
-- Docker (optional, for containerized setup)
 - OpenAI API Key ([Get one](https://platform.openai.com/api-keys))
 
 ### Installation
@@ -184,18 +149,18 @@ Layer 1: shared/       → Reusable resources
 
 4. **Start development servers**
    ```bash
-   # Start all applications
-   yarn dev
+   # Start backend server
+   yarn workspace backend dev    # Port 8080
 
-   # Or start individually
-   yarn dev:cv        # CV Portfolio (http://localhost:3000)
-   yarn dev:defi      # DeFi Dashboard (http://localhost:3001)
-   yarn dev:backend   # WebSocket Server (ws://localhost:8080)
+   # Start CV portfolio (in another terminal)
+   yarn workspace cv-portfolio dev    # Port 3000
+
+   # Start UI kit (optional, in another terminal)
+   yarn workspace ui-kit dev    # Port 5173
    ```
 
 5. **Open in browser**
    - CV Portfolio: [http://localhost:3000](http://localhost:3000)
-   - DeFi Dashboard: [http://localhost:3001](http://localhost:3001)
 
 ---
 
@@ -204,49 +169,57 @@ Layer 1: shared/       → Reusable resources
 ```
 cv-vsevolod-berdutin/
 ├── apps/
-│   ├── cv-portfolio/              # Application 1: CV Portfolio
+│   ├── cv-portfolio/              # Main CV Portfolio Application
 │   │   ├── src/
-│   │   │   ├── app/              # Next.js app router
-│   │   │   ├── pages/            # FSD Layer 5: Page compositions
-│   │   │   ├── widgets/          # FSD Layer 4: Composite blocks
-│   │   │   ├── features/         # FSD Layer 3: User interactions
-│   │   │   ├── entities/         # FSD Layer 2: Business entities
-│   │   │   └── shared/           # FSD Layer 1: Shared resources
-│   │   ├── public/
-│   │   ├── next.config.js
+│   │   │   ├── components/       # UI components
+│   │   │   │   ├── ChatWidget/  # AI chat feature
+│   │   │   │   └── CVSections/  # CV content sections
+│   │   │   ├── pages/           # Route pages
+│   │   │   ├── hooks/           # Custom React hooks
+│   │   │   ├── api/             # API integration
+│   │   │   ├── data/            # Static data & types
+│   │   │   ├── utils/           # Utility functions
+│   │   │   ├── App.tsx          # Main app component
+│   │   │   └── main.tsx         # Entry point
+│   │   ├── public/              # Static assets
+│   │   ├── vite.config.ts       # Vite configuration
 │   │   ├── tailwind.config.js
 │   │   ├── tsconfig.json
 │   │   └── package.json
 │   │
-│   └── defi-dashboard/           # Application 2: DeFi Dashboard
+│   └── ui-kit/                   # Shared Component Library
 │       ├── src/
-│       │   ├── app/
-│       │   ├── pages/
-│       │   ├── widgets/
-│       │   ├── features/
-│       │   ├── entities/
-│       │   └── shared/
-│       ├── next.config.js
-│       ├── tailwind.config.js
-│       ├── tsconfig.json
+│       │   ├── atoms/           # Basic components
+│       │   │   ├── Button/
+│       │   │   ├── Input/
+│       │   │   ├── Badge/
+│       │   │   └── Spinner/
+│       │   ├── molecules/       # Composite components
+│       │   │   └── Card/
+│       │   ├── hooks/           # Reusable hooks
+│       │   ├── utils/           # Utility functions
+│       │   └── index.ts         # Public API
+│       ├── vite.config.ts
 │       └── package.json
 │
-├── backend/                       # WebSocket server
+├── backend/                      # Express + WebSocket Server
 │   ├── src/
-│   │   ├── server.ts
+│   │   ├── server.ts            # Main entry point
+│   │   ├── routes/
+│   │   │   └── chat.ts          # OpenAI chat endpoint
 │   │   └── websocket/
+│   │       └── priceStream.ts   # Mock price streaming
 │   ├── tsconfig.json
 │   └── package.json
 │
-├── docs/                          # Documentation
-│   ├── PROJECT_PROMPT.md         # Full project specification
-│   ├── IMPLEMENTATION_PLAN.md    # Step-by-step implementation guide
-│   └── CV_CONTENT.md             # CV data structure
+├── docs/                         # Documentation
+│   ├── CV_Berdutin_Vsevolod_Senior_Frontend.pdf
+│   └── CV_Berdutin_Vsevolod_Senior_Frontend.docx
 │
-├── docker-compose.yml            # Multi-container setup
-├── nginx.conf                    # Reverse proxy config
 ├── package.json                  # Root workspace config
 ├── .env.local.example            # Environment variables template
+├── .eslintrc.js                  # ESLint configuration
+├── .prettierrc                   # Prettier configuration
 └── README.md                     # This file
 ```
 
@@ -258,72 +231,53 @@ cv-vsevolod-berdutin/
 
 ```bash
 # Development
-yarn dev              # Start all apps in development mode
-yarn dev:cv           # Start CV Portfolio only
-yarn dev:defi         # Start DeFi Dashboard only
-yarn dev:backend      # Start WebSocket server only
+yarn workspace cv-portfolio dev       # Start CV Portfolio (port 3000)
+yarn workspace ui-kit dev             # Start UI Kit (port 5173)
+yarn workspace backend dev            # Start backend server (port 8080)
 
 # Building
-yarn build            # Build all applications
-yarn build:cv         # Build CV Portfolio only
-yarn build:defi       # Build DeFi Dashboard only
+yarn workspace cv-portfolio build     # Build CV Portfolio
+yarn workspace ui-kit build           # Build UI Kit
+yarn workspace backend build          # Build backend
 
 # Production
-yarn start            # Start all apps in production mode
+yarn workspace cv-portfolio preview   # Preview CV Portfolio build
+yarn workspace backend start          # Start backend in production
 
 # Code Quality
-yarn lint             # Run ESLint on all workspaces
-yarn lint:fix         # Fix ESLint errors
-yarn format           # Format code with Prettier
-yarn type-check       # Run TypeScript type checking
-
-# Testing
-yarn test             # Run all tests
-yarn test:watch       # Run tests in watch mode
-yarn test:coverage    # Generate coverage report
-
-# Docker
-yarn docker:build     # Build Docker images
-yarn docker:up        # Start containers
-yarn docker:down      # Stop containers
-yarn docker:logs      # View container logs
+yarn lint                             # Run ESLint on all workspaces
+yarn lint:fix                         # Fix ESLint errors
+yarn format                           # Format code with Prettier
 
 # Cleanup
-yarn clean            # Remove node_modules and build artifacts
+yarn clean                            # Remove node_modules and build artifacts
 ```
 
 ### Development Workflow
 
-1. **Create a new feature**
+1. **Create a new component**
    ```bash
-   # Follow FSD structure
-   apps/cv-portfolio/src/features/your-feature/
-   ├── ui/              # UI components
-   ├── model/           # Business logic
-   ├── api/             # API calls
-   └── index.ts         # Public API
+   # For CV Portfolio
+   apps/cv-portfolio/src/components/YourComponent/
+   ├── YourComponent.tsx
+   └── index.ts
+
+   # For UI Kit (Atomic Design)
+   apps/ui-kit/src/atoms/YourAtom/
+   ├── YourAtom.tsx
+   └── index.ts
    ```
 
-2. **Write tests**
-   ```bash
-   yarn test features/your-feature
-   ```
-
-3. **Lint and format**
+2. **Lint and format**
    ```bash
    yarn lint:fix
    yarn format
    ```
 
-4. **Type check**
+3. **Commit changes**
    ```bash
-   yarn type-check
-   ```
-
-5. **Commit changes**
-   ```bash
-   git add .
-   git commit -m "feat: add new feature"
+   # Use /git command as per project conventions
+   /git
    ```
 
 ### Code Style
@@ -341,104 +295,17 @@ Configuration files:
 
 ---
 
-## 🐳 Docker Deployment
-
-### Using Docker Compose
-
-1. **Build and start containers**
-   ```bash
-   docker-compose up --build
-   ```
-
-2. **Access applications**
-   - Nginx reverse proxy: [http://localhost](http://localhost)
-   - CV Portfolio: [http://localhost:3000](http://localhost:3000)
-   - DeFi Dashboard: [http://localhost:3001](http://localhost:3001)
-   - WebSocket Server: ws://localhost:8080
-
-3. **Stop containers**
-   ```bash
-   docker-compose down
-   ```
-
-### Manual Docker Build
-
-```bash
-# Build CV Portfolio
-cd apps/cv-portfolio
-docker build -t cv-portfolio .
-
-# Build DeFi Dashboard
-cd apps/defi-dashboard
-docker build -t defi-dashboard .
-
-# Build Backend
-cd backend
-docker build -t backend .
-
-# Run containers
-docker run -p 3000:3000 cv-portfolio
-docker run -p 3001:3000 defi-dashboard
-docker run -p 8080:8080 backend
-```
-
----
-
 ## 📚 Documentation
 
-- **[Project Specification](docs/PROJECT_PROMPT.md)** - Complete project requirements
-- **[Implementation Plan](docs/IMPLEMENTATION_PLAN.md)** - Step-by-step development guide
-- **[CV Content](docs/CV_CONTENT.md)** - Structured CV data
-- **[Feature-Sliced Design](https://feature-sliced.design/)** - Architecture methodology
-
-### Key Concepts
-
-- **[FSD Layers](docs/PROJECT_PROMPT.md#fsd-layer-descriptions)** - Understanding the architecture
-- **[Module Federation](docs/PROJECT_PROMPT.md#module-federation-setup)** - Micro-frontend integration
-- **[Rendering Strategies](docs/PROJECT_PROMPT.md#rendering-strategy-demonstration)** - SSG, SSR, ISR
-
----
-
-## 🧪 Testing
-
-### Unit Tests
-
-```bash
-# Run all tests
-yarn test
-
-# Watch mode
-yarn test:watch
-
-# Coverage report
-yarn test:coverage
-```
-
-### E2E Tests (Optional)
-
-```bash
-# Install Playwright
-yarn add -D @playwright/test
-
-# Run E2E tests
-yarn test:e2e
-```
-
-### Accessibility Testing
-
-```bash
-# Install axe-core
-yarn add -D @axe-core/react
-
-# Run accessibility tests
-yarn test:a11y
-```
+Available in the `docs/` folder:
+- CV_Berdutin_Vsevolod_Senior_Frontend.pdf
+- CV_Berdutin_Vsevolod_Senior_Frontend.docx
 
 ---
 
 ## 🚢 Deployment
 
-### Vercel (Recommended)
+### Vercel (Recommended for Frontend)
 
 1. **Install Vercel CLI**
    ```bash
@@ -451,31 +318,20 @@ yarn test:a11y
    vercel
    ```
 
-3. **Deploy DeFi Dashboard**
-   ```bash
-   cd apps/defi-dashboard
-   vercel
-   ```
+3. **Set environment variables in Vercel dashboard**
+   - `OPENAI_API_KEY`
 
-4. **Set environment variables in Vercel dashboard**
+### Backend Deployment
 
-### AWS / DigitalOcean
+Deploy the Express backend to any Node.js hosting platform:
+- **Railway** - Simple deployment with automatic SSL
+- **Render** - Free tier available
+- **DigitalOcean App Platform** - Easy Node.js deployment
+- **AWS EC2 / Elastic Beanstalk** - More control
 
-1. **Build Docker images**
-   ```bash
-   docker-compose build
-   ```
-
-2. **Push to container registry**
-   ```bash
-   docker tag cv-portfolio your-registry/cv-portfolio
-   docker push your-registry/cv-portfolio
-   ```
-
-3. **Deploy to cloud provider**
-   - Configure load balancer
-   - Set up SSL certificates
-   - Configure environment variables
+**Required environment variables:**
+- `OPENAI_API_KEY`
+- `PORT` (default: 8080)
 
 ---
 
@@ -488,10 +344,10 @@ Contributions are welcome! Please follow these guidelines:
    ```bash
    git checkout -b feature/amazing-feature
    ```
-3. **Follow FSD architecture**
-   - Place code in appropriate layers
-   - Export through public APIs
-   - Write tests for new features
+3. **Make your changes**
+   - Follow existing code structure
+   - Maintain consistent code style
+   - Test your changes
 4. **Commit your changes**
    ```bash
    git commit -m 'feat: add amazing feature'
@@ -535,22 +391,22 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **[Feature-Sliced Design](https://feature-sliced.design/)** - Architecture methodology
-- **[Next.js](https://nextjs.org/)** - React framework
+- **[React](https://react.dev/)** - UI library
+- **[Vite](https://vitejs.dev/)** - Build tool
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
 - **[OpenAI](https://openai.com/)** - AI integration
-- **[Recharts](https://recharts.org/)** - Charting library
+- **[Zustand](https://zustand-demo.pmnd.rs/)** - State management
 
 ---
 
 ## 📊 Project Status
 
-- ✅ FSD Architecture implemented
-- ✅ CV Portfolio completed
-- ✅ AI Chat integration functional
-- ✅ DeFi Dashboard with real-time data
-- ✅ Docker setup configured
-- 🚧 Module Federation integration (in progress)
+- ✅ CV Portfolio completed with Vite + React
+- ✅ AI Chat integration functional (OpenAI)
+- ✅ UI Kit with Atomic Design pattern
+- ✅ Backend with Express + WebSocket
+- ✅ Monorepo setup with Yarn Workspaces
+- 🚧 Module Federation integration (experimental)
 - 📝 Documentation (ongoing)
 
 ---
@@ -561,4 +417,4 @@ Give a ⭐️ if this project helped you or if you find it interesting!
 
 ---
 
-**Built with ❤️ using Feature-Sliced Design**
+**Built with ❤️ using React + Vite**
