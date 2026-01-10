@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { Button } from './atoms/Button';
-import { Input } from './atoms/Input';
 import { Card } from './molecules/Card';
 import { Badge } from './atoms/Badge';
 import { Spinner } from './atoms/Spinner';
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [inputValue, setInputValue] = useState('');
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -43,36 +41,6 @@ function App() {
             <Button variant="primary" size="sm">Small</Button>
             <Button variant="primary" size="lg">Large</Button>
             <Button variant="primary" disabled>Disabled</Button>
-          </div>
-        </Card>
-
-        {/* Inputs */}
-        <Card className="p-6">
-          <h2 className="mb-4 text-2xl font-semibold text-text-primary">Inputs</h2>
-          <div className="space-y-4">
-            <Input
-              label="Email"
-              type="email"
-              placeholder="Enter your email"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              helperText="We'll never share your email."
-            />
-            <Input
-              label="Password"
-              type="password"
-              placeholder="Enter password"
-              required
-            />
-            <Input
-              label="Error Example"
-              placeholder="This has an error"
-              error="This field is required"
-            />
-            <Input
-              placeholder="Disabled input"
-              disabled
-            />
           </div>
         </Card>
 

@@ -6,7 +6,6 @@
 [![Vite](https://img.shields.io/badge/Vite-5.0-646cff)](https://vitejs.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
@@ -22,7 +21,6 @@
 - [Deployment](#deployment)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -139,10 +137,10 @@ This project uses **Yarn Workspaces** to manage multiple applications:
 
 3. **Set up environment variables**
    ```bash
-   cp .env.local.example .env.local
+   cp .env.example .env
    ```
 
-   Edit `.env.local` and add your OpenAI API key:
+   Edit `.env` and add your OpenAI API key:
    ```env
    OPENAI_API_KEY=sk-your-openai-api-key-here
    ```
@@ -217,7 +215,7 @@ cv-vsevolod-berdutin/
 │   └── CV_Berdutin_Vsevolod_Senior_Frontend.docx
 │
 ├── package.json                  # Root workspace config
-├── .env.local.example            # Environment variables template
+├── .env.example                  # Environment variables template
 ├── .eslintrc.js                  # ESLint configuration
 ├── .prettierrc                   # Prettier configuration
 └── README.md                     # This file
@@ -369,12 +367,6 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 - `refactor:` - Code refactoring
 - `test:` - Adding or updating tests
 - `chore:` - Maintenance tasks
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 

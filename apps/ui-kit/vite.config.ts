@@ -14,7 +14,6 @@ export default defineConfig({
       exposes: {
         // Atoms
         './Button': './src/atoms/Button',
-        './Input': './src/atoms/Input',
         './Badge': './src/atoms/Badge',
         './Spinner': './src/atoms/Spinner',
         // Molecules
@@ -23,12 +22,8 @@ export default defineConfig({
         './utils': './src/utils',
         './cn': './src/utils/cn',
         './formatDate': './src/utils/formatDate',
-        './validators': './src/utils/validators',
         // Hooks
         './hooks': './src/hooks',
-        './useDebounce': './src/hooks/useDebounce',
-        './useMediaQuery': './src/hooks/useMediaQuery',
-        './useClickOutside': './src/hooks/useClickOutside',
       },
       // Shared dependencies
       shared: {
