@@ -1,5 +1,8 @@
 import { Message } from '@/data/messageTypes';
 
+// API base URL: uses environment variable in production, falls back to proxy in development
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+
 /**
  * Send a message to the AI chat API
  * @param message - The user's message content
@@ -10,7 +13,7 @@ export async function sendMessage(
   message: string,
   history: Message[]
 ): Promise<string> {
-  const response = await fetch('/api/chat', {
+  const response = await fetch(`${API_BASE_URL}/api/chat`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -1,0 +1,13 @@
+{
+  "buildCommand": "cd apps/cv-portfolio && yarn build",
+  "outputDirectory": "apps/cv-portfolio/dist",
+  "installCommand": "yarn install",
+  "devCommand": "cd apps/cv-portfolio && yarn dev",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
