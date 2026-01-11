@@ -5,7 +5,7 @@ services:
     plan: free
     rootDir: backend
     buildCommand: yarn install && yarn build
-    startCommand: yarn start
+    startCommand: node dist/server.js
     healthCheckPath: /health
     envVars:
       - key: PORT
@@ -13,4 +13,6 @@ services:
       - key: OPENAI_API_KEY
         sync: false
         # Set this in Render dashboard
+      - key: NODE_ENV
+        value: production
     autoDeploy: true
