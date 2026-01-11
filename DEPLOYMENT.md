@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide covers deploying the CV Portfolio project using **Vercel (Frontend)** + **Railway (Backend)**.
+This guide covers deploying the CV Portfolio project using **Vercel (Frontend)** + **Render (Backend)**.
 
 ---
 
@@ -8,33 +8,37 @@ This guide covers deploying the CV Portfolio project using **Vercel (Frontend)**
 
 - GitHub account with repository pushed
 - Vercel account ([sign up](https://vercel.com))
-- Railway account ([sign up](https://railway.app))
+- Render account ([sign up](https://render.com))
 - OpenAI API key ([get one](https://platform.openai.com/api-keys))
 
 ---
 
-## Part 1: Deploy Backend to Railway
+## Part 1: Deploy Backend to Render (FREE)
 
-### Step 1: Create Railway Project
+### Step 1: Create Render Account
 
-1. Go to [railway.app](https://railway.app)
-2. Click "Start a New Project"
-3. Select "Deploy from GitHub repo"
-4. Authorize GitHub and select your repository: `cv-vsevolod-berdutin`
-5. Railway will detect your monorepo
+1. Go to [render.com](https://render.com)
+2. Sign up with GitHub (recommended for easy deployment)
+3. Authorize Render to access your repositories
 
-### Step 2: Configure Backend Service
+### Step 2: Create Web Service
 
-1. After project creation, click "New Service" → "GitHub Repo"
-2. In the service settings:
-   - **Root Directory**: `backend`
-   - **Build Command**: `yarn install && yarn build`
-   - **Start Command**: `yarn start`
-   - **Watch Paths**: `backend/**`
+1. From Render dashboard, click "New +" → "Web Service"
+2. Connect your GitHub repository: `cv-vsevolod-berdutin`
+3. Render will detect the `render.yaml` configuration file
+4. Click "Apply" to use the Blueprint
+
+**Or manually configure:**
+- **Name**: `cv-backend` (or your choice)
+- **Root Directory**: `backend`
+- **Runtime**: `Node`
+- **Build Command**: `yarn install && yarn build`
+- **Start Command**: `yarn start`
+- **Plan**: **Free** (important!)
 
 ### Step 3: Set Environment Variables
 
-In Railway project settings → Variables, add:
+In the Render service settings → Environment tab, add:
 
 ```
 OPENAI_API_KEY=your_actual_openai_api_key_here
@@ -45,22 +49,24 @@ PORT=8080
 
 ### Step 4: Deploy
 
-1. Railway will automatically deploy your backend
-2. Wait for deployment to complete (usually 2-3 minutes)
-3. Railway will provide a URL like: `https://your-backend-name.up.railway.app`
+1. Click "Create Web Service"
+2. Render will automatically build and deploy (usually 3-5 minutes)
+3. Render will provide a URL like: `https://cv-backend-xxxx.onrender.com`
 4. **Copy this URL** - you'll need it for Vercel configuration
 
 ### Step 5: Test Backend
 
 Test your backend is running:
 ```bash
-curl https://your-backend-name.up.railway.app/health
+curl https://cv-backend-xxxx.onrender.com/health
 ```
 
 Expected response:
 ```json
-{"status":"ok","timestamp":"2025-01-11T..."}
+{"status":"ok","timestamp":"2026-01-11T..."}
 ```
+
+**Note:** Free tier services spin down after 15 minutes of inactivity. First request after inactivity may take 30-60 seconds to wake up.
 
 ---
 
@@ -87,9 +93,9 @@ Vercel should automatically use these settings (from `vercel.json`):
 In Vercel project settings → Environment Variables, add:
 
 **Variable Name:** `VITE_API_URL`
-**Value:** `https://your-backend-name.up.railway.app` (your Railway backend URL from Part 1)
+**Value:** `https://cv-backend-xxxx.onrender.com` (your Render backend URL from Part 1)
 
-**Important:** Use the exact Railway URL (without trailing slash)
+**Important:** Use the exact Render URL (without trailing slash)
 
 ### Step 4: Deploy
 
@@ -107,7 +113,7 @@ In Vercel project settings → Environment Variables, add:
 
 ## Part 3: Update Frontend to Use Backend URL
 
-After deployment, you need to update your frontend code to use the Railway backend URL.
+After deployment, you need to update your frontend code to use the Render backend URL.
 
 ### Option A: Using Environment Variable (Recommended)
 
@@ -128,7 +134,7 @@ Let me know if you need help finding and updating the API calls in your code.
 
 ## Environment Variables Summary
 
-### Railway (Backend)
+### Render (Backend)
 ```env
 OPENAI_API_KEY=sk-...your-key
 PORT=8080
@@ -136,7 +142,7 @@ PORT=8080
 
 ### Vercel (Frontend)
 ```env
-VITE_API_URL=https://your-backend-name.up.railway.app
+VITE_API_URL=https://cv-backend-xxxx.onrender.com
 ```
 
 ---
@@ -146,15 +152,18 @@ VITE_API_URL=https://your-backend-name.up.railway.app
 ### Backend Issues
 
 **Problem:** Backend deployment fails
-**Solution:** Check Railway logs for errors. Ensure `OPENAI_API_KEY` is set correctly.
+**Solution:** Check Render logs for errors. Ensure `OPENAI_API_KEY` is set correctly.
 
 **Problem:** `/health` endpoint returns 404
-**Solution:** Ensure Railway root directory is set to `backend`
+**Solution:** Ensure Render root directory is set to `backend`
+
+**Problem:** Backend is slow to respond (first request)
+**Solution:** This is normal on Render's free tier - services spin down after 15 minutes of inactivity
 
 ### Frontend Issues
 
 **Problem:** API calls fail with CORS error
-**Solution:** Verify `VITE_API_URL` is set correctly in Vercel. Check Railway backend allows CORS (already configured in your Express app).
+**Solution:** Verify `VITE_API_URL` is set correctly in Vercel. Check Render backend allows CORS (already configured in your Express app).
 
 **Problem:** Build fails
 **Solution:** Ensure all dependencies are in `package.json`. Check Vercel build logs.
@@ -163,8 +172,8 @@ VITE_API_URL=https://your-backend-name.up.railway.app
 
 **Problem:** Frontend can't reach backend
 **Solution:**
-1. Verify Railway backend is running: `curl https://your-backend.up.railway.app/health`
-2. Check `VITE_API_URL` in Vercel matches Railway URL exactly
+1. Verify Render backend is running: `curl https://cv-backend-xxxx.onrender.com/health`
+2. Check `VITE_API_URL` in Vercel matches Render URL exactly
 3. Redeploy frontend after changing environment variables
 
 ---
@@ -173,10 +182,11 @@ VITE_API_URL=https://your-backend-name.up.railway.app
 
 ### Automatic Deployments
 
-Both Vercel and Railway are now connected to your GitHub repo:
+Both Vercel and Render are now connected to your GitHub repo:
 
 - **Push to `main` branch** → Automatic deployment to both platforms
 - **Pull Requests** → Vercel creates preview deployments
+- **Note:** Render free tier may have slower builds than paid tiers
 
 ### Custom Domain (Optional)
 
@@ -185,9 +195,9 @@ Both Vercel and Railway are now connected to your GitHub repo:
 2. Add your custom domain
 3. Follow DNS configuration instructions
 
-**Railway:**
-1. Go to Service Settings → Domain
-2. Add custom domain
+**Render:**
+1. Go to Service Settings → Custom Domain
+2. Add custom domain (requires paid plan for custom domains)
 3. Update DNS records
 
 ---
@@ -196,14 +206,27 @@ Both Vercel and Railway are now connected to your GitHub repo:
 
 1. ✅ Test your live application
 2. ✅ Update README with production URLs
-3. ✅ Monitor Railway usage (free tier: $5/month credit)
+3. ✅ Be aware: Render free tier spins down after 15 min inactivity
 4. ✅ Monitor Vercel usage (free tier: generous limits)
 5. ✅ Set up monitoring/analytics if needed
 
 ---
 
+## Render Free Tier Limitations
+
+**Important to know:**
+- ✅ **Completely FREE** (no credit card required)
+- ⏰ Services spin down after 15 minutes of inactivity
+- 🐌 First request after spin-down takes 30-60 seconds to wake up
+- 💾 750 hours/month of instance time (enough for a portfolio)
+- 🔄 Auto-deploys from GitHub included
+
+**For production with high traffic**, consider upgrading to Render's paid plan ($7/month) for always-on service.
+
+---
+
 ## Support
 
-- **Railway Docs:** https://docs.railway.app
+- **Render Docs:** https://render.com/docs
 - **Vercel Docs:** https://vercel.com/docs
 - **Issues:** Open an issue in your GitHub repository

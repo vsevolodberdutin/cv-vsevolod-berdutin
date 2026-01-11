@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: cv-backend
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: yarn install && yarn build
+    startCommand: yarn start
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: OPENAI_API_KEY
+        sync: false
+        # Set this in Render dashboard
+    autoDeploy: true
