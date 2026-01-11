@@ -1,8 +1,8 @@
 {
-  "buildCommand": "yarn workspace cv-portfolio build",
-  "outputDirectory": "apps/cv-portfolio/dist",
-  "installCommand": "yarn install",
-  "devCommand": "yarn workspace cv-portfolio dev",
+  "buildCommand": "cd ../.. && yarn workspace cv-portfolio build",
+  "outputDirectory": "dist",
+  "installCommand": "cd ../.. && yarn install",
+  "devCommand": "cd ../.. && yarn workspace cv-portfolio dev",
   "framework": null,
   "rewrites": [
     {
