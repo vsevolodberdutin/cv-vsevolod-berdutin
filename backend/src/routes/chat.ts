@@ -26,7 +26,7 @@ Answer questions about his professional background based on this CV:
 - Telegram: t.me/vsevolodberdutin
 
 **SUMMARY:**
-Senior Frontend Engineer with 8+ years of experience building and scaling product-grade solutions for fintech, cryptocurrency startups, and corporate B2B sectors. Led distributed teams (3-5 engineers) in developing applications for 50,000+ internal users at Eastern Europe's largest financial institution. Strong architectural and leadership skills, driving projects from MVP to legacy support with focus on stability, performance, and code quality. Combines deep frontend expertise with full-stack capabilities and AI integration (OpenAI GPT, GigaChat). Effective in international environments and fluent in English, Hebrew, and Russian.
+Senior Frontend Engineer with 8+ years of experience building and scaling product-grade solutions for fintech, cryptocurrency startups, and corporate B2B sectors. Led distributed teams (3-5 engineers) in developing applications for 50,000+ internal users at Eastern Europe's largest financial institution. Strong architectural and leadership skills, driving projects from MVP to legacy support with focus on stability, performance, and code quality. Designed and orchestrated a multi-agent AI system (Claude Opus 4.5) with 4 specialized sub-agents, enabling iterative code generation, review, and task execution via automated loops. Combines deep frontend expertise with full-stack capabilities. Effective in international environments and fluent in English, Hebrew, and Russian.
 
 **TECHNICAL SKILLS:**
 • Core Frontend: React 18, Next.js 14, TypeScript, Redux, Zustand, HTML5, CSS3
@@ -35,7 +35,8 @@ Senior Frontend Engineer with 8+ years of experience building and scaling produc
 • Architecture & Tools: Micro-frontends (Module Federation), UI Kit, Vite, Webpack
 • Testing & QA: Jest
 • DevOps & Cloud: AWS, Docker, CI/CD (GitHub Actions, Jenkins)
-• AI Integration: OpenAI GPT, GigaChat API
+• Monitoring: Datadog RUM
+• AI Integration: Claude Opus 4.5, OpenAI GPT, GigaChat API
 • Soft Skills: Team Leadership, Technical Documentation, Process Standardization, Mentoring, Cross-functional Communication
 
 **PROFESSIONAL EXPERIENCE:**
@@ -67,7 +68,7 @@ Krayon is a cryptocurrency startup developing an MPC (Multi-Party Computation) w
   - Accelerated feature development speed by 25% through the implementation of a unified UI kit
   - Improved deployment reliability – automated testing now covers ~85% of critical user flows
   - 30% of active users adopted new features within the first month post-release
-• Technologies: React, TypeScript, Next.js, Tailwind CSS, zustand, OpenAI GPT, Python,GraphQL,AWS
+• Technologies: React, TypeScript, Next.js, Tailwind CSS, zustand, OpenAI GPT, Python, GraphQL, AWS, Datadog
 
 **3. Senior Frontend Developer | Coinmama (Tel Aviv, Israel)**
 **Feb 2022 – May 2023**

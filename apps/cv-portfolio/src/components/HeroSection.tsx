@@ -27,8 +27,8 @@ export const HeroSection: React.FC = () => {
             Expertise in <strong className="text-text-primary">fintech, cryptocurrency, and corporate B2B</strong> applications.
           </p>
           <p>
-            Integrated AI solutions using <strong className="text-text-primary">OpenAI GPT and GigaChat</strong>,
-            improving user experience and operational efficiency.
+            Designed and orchestrated a <strong className="text-text-primary">multi-agent AI system (Claude Opus 4.5)</strong> with 4 specialized sub-agents,
+            enabling iterative code generation, review, and task execution via automated loops.
           </p>
           <p className="mt-4 border-t border-gray-300 pt-4">
             <strong className="text-text-primary">Languages:</strong>{' '}

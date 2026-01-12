@@ -51,7 +51,7 @@ export const ExperienceContent: React.FC<ExperienceContentProps> = ({ experience
 
           <div className="flex flex-wrap gap-2">
             {exp.technologies.map((tech) => (
-              <Badge key={tech} variant="info">
+              <Badge key={tech} variant="info" className="text-blue-700">
                 {tech}
               </Badge>
             ))}

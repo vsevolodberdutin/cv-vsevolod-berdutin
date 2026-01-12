@@ -13,7 +13,7 @@ Led distributed teams of 3-5 engineers, delivering solutions for 50,000+ interna
 
 Expertise in fintech, cryptocurrency, and corporate B2B applications.
 
-Integrated AI solutions using OpenAI GPT and GigaChat, improving user experience and operational efficiency.
+Designed and orchestrated a multi-agent AI system (Claude Opus 4.5) with 4 specialized sub-agents, enabling iterative code generation, review, and task execution via automated loops.
 
 Languages:
 English (C1) • Hebrew (B1/B2) • Russian (Native)`,
@@ -44,8 +44,12 @@ English (C1) • Hebrew (B1/B2) • Russian (Native)`,
       items: ['AWS', 'Docker', 'CI/CD (GitHub Actions, Jenkins)'],
     },
     {
+      category: 'Monitoring',
+      items: ['Datadog RUM'],
+    },
+    {
       category: 'AI Integration',
-      items: ['OpenAI GPT', 'GigaChat API'],
+      items: ['Claude Opus 4.5', 'OpenAI GPT', 'GigaChat API'],
     },
     {
       category: 'Soft Skills',
@@ -89,7 +93,7 @@ English (C1) • Hebrew (B1/B2) • Russian (Native)`,
         'Built an intelligent FAQ chat system using OpenAI GPT, reducing support tickets by ≈35%',
         'Worked on MPC (Multi-Party Computation) wallet for secure digital asset management',
       ],
-      technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'zustand' ,'OpenAI GPT', 'Python', 'GraphQL', 'AWS'],
+      technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'zustand' ,'OpenAI GPT', 'Python', 'GraphQL', 'AWS', 'Datadog'],
       achievements: [
         'Accelerated feature development speed by 25% through implementation of unified UI kit',
         'Improved deployment reliability – automated testing covers ~85% of critical user flows',
