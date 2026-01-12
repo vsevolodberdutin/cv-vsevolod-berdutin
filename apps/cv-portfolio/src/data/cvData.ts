@@ -180,15 +180,15 @@ English (C1) • Hebrew (B1/B2) • Russian (Native)`,
   languages: [
     {
       name: 'Russian',
-      level: 'Native (C2)',
+      level: 'Native - C2',
     },
     {
       name: 'English',
-      level: 'Advanced (C1)',
+      level: 'Advanced - C1',
     },
     {
       name: 'Hebrew',
-      level: 'Intermediate (B1/B2)',
+      level: 'Intermediate - B1/B2',
     },
   ],
 

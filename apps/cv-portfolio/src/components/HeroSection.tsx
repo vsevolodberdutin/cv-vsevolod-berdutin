@@ -15,7 +15,7 @@ export const HeroSection: React.FC = () => {
         </h2>
         <div className="space-y-3 leading-relaxed text-text-secondary">
           <p>
-            <strong className="text-text-primary">8+ years of experience</strong> in frontend development,
+            <strong className="text-text-primary">8+ years of experience</strong> in frontend dev,
             specializing in React, TypeScript, and Next.js.
           </p>
           <p>
@@ -27,7 +27,7 @@ export const HeroSection: React.FC = () => {
             Expertise in <strong className="text-text-primary">fintech, cryptocurrency, and corporate B2B</strong> applications.
           </p>
           <p>
-            Designed and orchestrated a <strong className="text-text-primary">multi-agent AI system (Claude Opus 4.5)</strong> with 4 specialized sub-agents,
+            Designed and orchestrated a <strong className="text-text-primary">multi-agent AI system (Claude Opus 4.5)</strong><br/> with 4 specialized sub-agents,
             enabling iterative code generation, review, and task execution via automated loops.
           </p>
           <p className="mt-4 border-t border-gray-300 pt-4">
