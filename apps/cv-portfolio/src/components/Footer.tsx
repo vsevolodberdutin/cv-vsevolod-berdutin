@@ -51,6 +51,27 @@ export const Footer: React.FC = () => {
               </div>
             </a>
 
+            {/* WhatsApp */}
+            {cvData.contact.whatsapp && (
+              <a
+                href={cvData.contact.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 rounded-lg p-3
+                  transition duration-300
+                  hover:bg-background-secondary
+                  focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              >
+                <span className="text-2xl" aria-hidden="true">💬</span>
+                <div>
+                  <p className="text-sm text-text-secondary">WhatsApp</p>
+                  <p className="font-semibold text-text-primary">
+                    +972 555 07 8880
+                  </p>
+                </div>
+              </a>
+            )}
+
             {/* LinkedIn */}
             <a
               href={cvData.contact.linkedin}
@@ -88,27 +109,6 @@ export const Footer: React.FC = () => {
                 </p>
               </div>
             </a>
-
-            {/* WhatsApp */}
-            {cvData.contact.whatsapp && (
-              <a
-                href={cvData.contact.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-lg p-3
-                  transition duration-300
-                  hover:bg-background-secondary
-                  focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-              >
-                <span className="text-2xl" aria-hidden="true">💬</span>
-                <div>
-                  <p className="text-sm text-text-secondary">WhatsApp</p>
-                  <p className="font-semibold text-text-primary">
-                    +972 555 07 8880
-                  </p>
-                </div>
-              </a>
-            )}
 
             {/* GitHub */}
             {cvData.contact.github && (

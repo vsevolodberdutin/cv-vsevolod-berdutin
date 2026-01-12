@@ -21,7 +21,7 @@ English (C1) • Hebrew (B1/B2) • Russian (Native)`,
   skills: [
     {
       category: 'Core Frontend',
-      items: ['React 18', 'Next.js 14', 'TypeScript', 'Redux', 'Zustand', 'HTML5', 'CSS3'],
+      items: ['React 18', 'Next.js 16', 'TypeScript', 'Redux', 'Zustand', 'HTML5', 'CSS3'],
     },
     {
       category: 'Styling & UI',
@@ -45,7 +45,7 @@ English (C1) • Hebrew (B1/B2) • Russian (Native)`,
     },
     {
       category: 'Monitoring',
-      items: ['Datadog RUM'],
+      items: ['Datadog RUM', 'Lighthouse'],
     },
     {
       category: 'AI Integration',

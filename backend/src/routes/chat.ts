@@ -29,13 +29,13 @@ Answer questions about his professional background based on this CV:
 Senior Frontend Engineer with 8+ years of experience building and scaling product-grade solutions for fintech, cryptocurrency startups, and corporate B2B sectors. Led distributed teams (3-5 engineers) in developing applications for 50,000+ internal users at Eastern Europe's largest financial institution. Strong architectural and leadership skills, driving projects from MVP to legacy support with focus on stability, performance, and code quality. Designed and orchestrated a multi-agent AI system (Claude Opus 4.5) with 4 specialized sub-agents, enabling iterative code generation, review, and task execution via automated loops. Combines deep frontend expertise with full-stack capabilities. Effective in international environments and fluent in English, Hebrew, and Russian.
 
 **TECHNICAL SKILLS:**
-• Core Frontend: React 18, Next.js 14, TypeScript, Redux, Zustand, HTML5, CSS3
+• Core Frontend: React 18, Next.js 16, TypeScript, Redux, Zustand, HTML5, CSS3
 • Styling & UI: Tailwind CSS, Material-UI
 • Backend & APIs: Node.js, Python, GraphQL, REST
 • Architecture & Tools: Micro-frontends (Module Federation), UI Kit, Vite, Webpack
 • Testing & QA: Jest
 • DevOps & Cloud: AWS, Docker, CI/CD (GitHub Actions, Jenkins)
-• Monitoring: Datadog RUM
+• Monitoring: Datadog RUM, Lighthouse
 • AI Integration: Claude Opus 4.5, OpenAI GPT, GigaChat API
 • Soft Skills: Team Leadership, Technical Documentation, Process Standardization, Mentoring, Cross-functional Communication
 

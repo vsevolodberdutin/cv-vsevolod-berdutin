@@ -3,7 +3,6 @@ import { HeroSection } from '@/components/HeroSection';
 import { CVSections } from '@/components/CVSections';
 import { ChatWidget } from '@/components/ChatWidget';
 import { Footer } from '@/components/Footer';
-import { StickyPhotoPortal } from '@/components/StickyPhotoPortal';
 
 /**
  * Home Page
@@ -12,10 +11,7 @@ import { StickyPhotoPortal } from '@/components/StickyPhotoPortal';
 export default function HomePage() {
   return (
     <>
-      {/* Sticky Photo Portal - Right side */}
-      <StickyPhotoPortal />
-
-      {/* Header - Sticky at top */}
+      {/* Header - Sticky at top with photo */}
       <Header />
 
       {/* Main Content */}
