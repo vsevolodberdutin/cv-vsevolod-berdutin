@@ -6,10 +6,10 @@ import { useSendMessage } from '@/hooks/useSendMessage';
 import { useChatStore } from '@/hooks/useChatStore';
 
 const SUGGESTED_PROMPTS = [
-  "What projects have you led?",
-  "Tell me about your AI integration work",
+  'What projects have you led?',
+  'Tell me about your AI integration work',
   "What's your experience with crypto/fintech?",
-  "Describe your team leadership approach",
+  'Describe your team leadership approach',
 ];
 
 /**
@@ -41,17 +41,13 @@ export const ChatWidget: React.FC = () => {
         {/* Header */}
         <div className="bg-accent p-4 text-white">
           <h3 className="text-xl font-bold">Ask Me Anything</h3>
-          <p className="text-sm opacity-90">
-            Powered by AI - Ask about my experience and skills
-          </p>
+          <p className="text-sm opacity-90">Powered by AI - Ask about my experience and skills</p>
         </div>
 
         {/* Suggested Prompts (shown when no messages) */}
         {messages.length === 0 && (
           <div className="space-y-3 p-6">
-            <p className="mb-3 text-sm text-text-secondary">
-              Try asking:
-            </p>
+            <p className="mb-3 text-sm text-text-secondary">Try asking:</p>
             <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
               {SUGGESTED_PROMPTS.map((prompt, index) => (
                 <button
@@ -70,22 +66,24 @@ export const ChatWidget: React.FC = () => {
         )}
 
         {/* Messages */}
-        <div className="max-h-96 space-y-4 overflow-y-auto p-4">
-          {messages.map((msg) => (
-            <MessageCard key={msg.id} message={msg} />
-          ))}
+        {messages.length > 0 && (
+          <div className="max-h-96 space-y-4 overflow-y-auto p-4">
+            {messages.map((msg) => (
+              <MessageCard key={msg.id} message={msg} />
+            ))}
 
-          {/* Loading indicator */}
-          {isLoading && (
-            <div className="flex items-center gap-2 text-text-secondary">
-              <Spinner size="sm" />
-              <span className="text-sm">Thinking...</span>
-            </div>
-          )}
+            {/* Loading indicator */}
+            {isLoading && (
+              <div className="flex items-center gap-2 text-text-secondary">
+                <Spinner size="sm" />
+                <span className="text-sm">Thinking...</span>
+              </div>
+            )}
 
-          {/* Scroll anchor */}
-          <div ref={messagesEndRef} />
-        </div>
+            {/* Scroll anchor */}
+            <div ref={messagesEndRef} />
+          </div>
+        )}
 
         {/* Input Form */}
         <SendMessageForm

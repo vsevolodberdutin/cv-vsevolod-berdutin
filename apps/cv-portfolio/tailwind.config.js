@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         background: '#FFFFFF',
-        'background-secondary': '#F7F7F8',
+        'background-secondary': '#f3f6f4',
         'text-primary': '#2D2D2D',
         'text-secondary': '#6B6B6B',
         accent: '#D97706', // amber-600
