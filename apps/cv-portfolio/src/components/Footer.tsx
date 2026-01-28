@@ -1,4 +1,5 @@
 import React from 'react';
+import { PopupButton } from 'react-calendly';
 import { Card } from 'ui_kit';
 import { DownloadButton } from '@/components/DownloadButton';
 import { cvData } from '@/data/cvData';
@@ -17,8 +18,8 @@ export const Footer: React.FC = () => {
             Contact Information
           </h3>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {/* Phone */}
-            <a
+            {/* Phone - commented out, using WhatsApp instead */}
+            {/* <a
               href={`tel:${cvData.contact.phone}`}
               className="flex items-center gap-3 rounded-lg p-3
                 transition duration-300
@@ -32,7 +33,7 @@ export const Footer: React.FC = () => {
                   {cvData.contact.phone}
                 </p>
               </div>
-            </a>
+            </a> */}
 
             {/* Email */}
             <a
@@ -64,7 +65,7 @@ export const Footer: React.FC = () => {
               >
                 <span className="text-2xl" aria-hidden="true">💬</span>
                 <div>
-                  <p className="text-sm text-text-secondary">WhatsApp</p>
+                  <p className="text-sm text-text-secondary">Phone / WhatsApp</p>
                   <p className="font-semibold text-text-primary">
                     +972 555 07 8880
                   </p>
@@ -130,6 +131,26 @@ export const Footer: React.FC = () => {
                 </div>
               </a>
             )}
+
+            {/* Schedule a Call - Calendly */}
+            <div className="flex items-center gap-3 rounded-lg p-3
+              transition duration-300
+              hover:bg-background-secondary"
+            >
+              <span className="text-2xl" aria-hidden="true">📅</span>
+              <div>
+                <p className="text-sm text-text-secondary">Schedule a Call</p>
+                <PopupButton
+                  url="https://calendly.com/vsevolodberdutin/30min"
+                  rootElement={document.getElementById('root')!}
+                  text="Book 30-min Meeting"
+                  className="cursor-pointer border-none bg-transparent p-0
+                    font-semibold text-accent
+                    transition duration-300
+                    hover:underline"
+                />
+              </div>
+            </div>
           </div>
         </Card>
 
